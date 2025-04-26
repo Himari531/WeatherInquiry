@@ -1,15 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Tagesschrift&display=swap');
 
 .App {
-    text-align: center;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    font-family: "Nunito", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 200;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    filter: brightness(0.5); /* 背景变暗，前面的字更清楚 */
+}
+
+.search-box {
+    display: flex;
+    margin-bottom: 30px;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-box input {
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 30px;
+    border: 2px solid #fff;
+    outline: none;
+    width: 250px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.2);
+    color: #030213;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.search-box input:focus {
+    border-color: #ff7f50;
+    box-shadow: 0 0 10px rgba(255, 127, 80, 0.7);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.search-box button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background: linear-gradient(135deg, #ff7f50, #ff6347);
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.search-box button:hover {
+    background: linear-gradient(135deg, #ff6347, #ff7f50);
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(255, 99, 71, 0.5);
 }
 
 .App-logo {

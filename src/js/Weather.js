@@ -86,7 +86,7 @@ const Weather = () => {
                     style={{backgroundImage: `url(${backgroundImage})`}}
                 ></div>
             )}
-            <h1>Weather Inquiry ⛅</h1>
+            <h1>World Weather Inquiry ⛅</h1>
             <div className="search-box">
                 <input
                     type="text"
