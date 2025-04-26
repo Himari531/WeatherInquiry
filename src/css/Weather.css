@@ -1,56 +1,73 @@
 /* 天气卡片 */
 .weather-card {
-    background-color: rgba(255, 183, 0, 0.3); /* 半透明背景 */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 添加阴影 */
-    width: 300px;
-    text-align: center;
+    background: rgba(255, 255, 255, 0.85); /* 半透明白色背景 */
+    border-radius: 20px;
+    padding: 24px;
     margin: 20px auto;
-    position: relative;
-    z-index: 1;
+    width: 340px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    text-align: center;
+    font-family: 'Noto Sans', 'PingFang SC', sans-serif;
+    color: #333;
 }
 
 .weather-card h2 {
-    font-size: 30px;
-    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: #0077ff; /* 蓝色系，感觉清爽 */
+    margin-bottom: 8px;
 }
 
 .weather-card p {
-    font-size: 16px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.5;
-    color: #333;
-    margin: 0.5rem 0;
-    text-align: center;
+    font-size: 1rem;
+    margin: 6px 0;
+    color: #444;
 }
 
-/*API图片显示*/
-.weather-icon {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 20px;
+.weather-card .weather-icon {
+    width: 100px;
+    height: 100px;
+    margin: 12px auto;
 }
 
-.top-row {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
+.weather-card p:first-of-type {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 12px;
 }
 
-.temp {
+.weather-card p.temp {
     font-size: 2.5rem;
     font-weight: bold;
-    margin: 0.5rem 0;
+    margin: 12px 0;
+    color: #ff6600; /* 温度用暖色一点的橘色 */
 }
 
-.description {
-    text-transform: capitalize;
-    margin-bottom: 1rem;
+.weather-card p.description {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 12px;
+    color: #555;
 }
 
-.details {
-    margin-top: 1rem;
+/* 让穿衣建议更加醒目 */
+.weather-card p:last-child {
+    margin-top: 12px;
+    font-weight: 600;
+    color: #008000; /* 绿色 */
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    filter: brightness(0.5); /* 背景变暗，前面的字更清楚 */
 }
 
 /* 动画 */
@@ -61,17 +78,6 @@
     50% {
         transform: translateY(-10px);
     }
-}
-
-.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover; /* 确保图片填充整个容器 */
-    background-position: center center; /* 使图片居中 */
-    z-index: -1; /* 让背景图片在内容下面 */
 }
 
 /* 错误提示 */

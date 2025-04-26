@@ -14,21 +14,25 @@ const Weather = () => {
     const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=zh_cn`;
 
-    const fetchCityImage = (cityName) => {
-        const unsplashAccessKey = process.env.REACT_APP_UNSPLASH_ACCESS_KEY;
-        const unsplashUrl = `https://api.unsplash.com/search/photos?query=${cityName}&client_id=${unsplashAccessKey}&orientation=landscape`;
+    const fetchCityImage = async (cityName) => {
+        try {
+            const unsplashAccessKey = process.env.REACT_APP_UNSPLASH_ACCESS_KEY;
+            const unsplashUrl = `https://api.unsplash.com/search/photos?query=${cityName}&client_id=${unsplashAccessKey}&orientation=landscape`;
 
-        axios.get(unsplashUrl)
-            .then((response) => {
-                if (response.data.results.length > 0) {
-                    setBackgroundImage(response.data.results[0].urls.full);
-                } else {
-                    setBackgroundImage(''); // 如果没图，保持默认
-                }
-            })
-            .catch(() => {
-                setBackgroundImage('');
-            });
+            const response = await axios.get(unsplashUrl);
+
+            if (response.data.results && response.data.results.length > 0) {
+                // 用 regular，适中大小，加载快
+                const imageUrl = response.data.results[0].urls.regular;
+                setBackgroundImage(imageUrl);
+            } else {
+                // 没找到图片就设置为一个默认背景
+                setBackgroundImage('https://images.unsplash.com/photo-1503264116251-35a269479413?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGRlZmF1bHR8ZW58MHx8fHwxNjkwMDYzNDU2&ixlib=rb-4.0.3&q=80&w=1080');
+            }
+        } catch (error) {
+            console.error('获取城市图片失败:', error);
+            setBackgroundImage('https://images.unsplash.com/photo-1503264116251-35a269479413?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGRlZmF1bHR8ZW58MHx8fHwxNjkwMDYzNDU2&ixlib=rb-4.0.3&q=80&w=1080');
+        }
     };
 
     const getClothingAdvice = (temp) => {
@@ -97,23 +101,21 @@ const Weather = () => {
 
             {weather && (
                 <div className="weather-card">
-                    <div className="top-row">
-                        <h2>{weather.name}</h2>
-                    </div>
-                    <p>local time:{localTime}</p>
-                    <img
-                        className="weather-icon"
-                        src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
-                        alt="weather icon"
-                    />
-                    <p className="temp">{weather.main.temp}°C</p>
-                    <p className="description">{weather.weather[0].description}</p>
-                    <div className="details">
-                        <p>最低温度: {weather.main.temp_min}°C</p>
-                        <p>最高温度: {weather.main.temp_max}°C</p>
-                        <p>湿度: {weather.main.humidity}%</p>
-                        <p>穿衣建议: {getClothingAdvice(weather.main.temp)}</p>
-                    </div>
+                    <h2>{weather.name}</h2>
+                    <p>local time : {localTime}</p>
+                    {weather && weather.weather && weather.weather[0] && (
+                        <img
+                            className="weather-icon"
+                            src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                            alt="weather icon"
+                        />
+                    )}
+                    <p>{weather.main.temp}°C</p>
+                    <p>{weather.weather[0].description}</p>
+                    <p>最低温度: {weather.main.temp_min}°C</p>
+                    <p>最高温度: {weather.main.temp_max}°C</p>
+                    <p>湿度: {weather.main.humidity}%</p>
+                    <p>穿衣建议: {getClothingAdvice(weather.main.temp)}</p>
                 </div>
             )}
         </div>
