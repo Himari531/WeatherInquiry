@@ -23,9 +23,6 @@ OpenWeatherMap API
 
 ## Installation Steps 🪤
 
-### Clone the repository:
-
-git clone https://github.com/yourusername/weather-app.git cd weather-app
 
 ### Install dependencies:
 
