@@ -1,38 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Tagesschrift&display=swap');
+
 .App {
-  text-align: center;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #83a4d4, #b6fbff);
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+}
+
+input {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4ecbf1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #35b8e8;
+}
+
+.weather-info {
+    margin-top: 20px;
+    background: #f0fdff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* 背景图或者背景色 */
+.clear {
+    background: linear-gradient(to right, #56ccf2, #2f80ed); /* 晴天蓝色 */
+    color: white;
+}
+
+.rain {
+    background: linear-gradient(to right, #4e54c8, #8f94fb); /* 雨天紫蓝 */
+    color: white;
+}
+
+.clouds {
+    background: linear-gradient(to right, #bdc3c7, #2c3e50); /* 多云灰色 */
+    color: white;
+}
+
+.snow {
+    background: linear-gradient(to right, #e0eafc, #cfdef3); /* 雪天浅蓝 */
+    color: #333;
+}
+
+.thunderstorm {
+    background: linear-gradient(to right, #141e30, #243b55); /* 雷暴暗蓝 */
+    color: white;
+}
+
+.default {
+    background: linear-gradient(to right, #bdc3c7, #2c3e50); /* 默认 */
+    color: white;
+}
+
+
+.weather-info img {
+    width: 100px;
+    height: 100px;
+    margin: 10px 0;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
