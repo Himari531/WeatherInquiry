@@ -6,7 +6,7 @@ const Weather = () => {
     const [weather, setWeather] = useState(null); // 存储天气信息
     const [error, setError] = useState(null); // 错误信息
 
-    const apiKey = '你的API密钥'; // 替换为你自己的API密钥
+    const apiKey = process.env.REACT_APP_WEATHER_API_KEY; // 替换为你自己的API密钥
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=zh_cn`; // 你可以根据需要选择不同的API参数
 
     // 根据天气变换背景
