@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
-import './Weather.css'; // 添加CSS文件引用
+import '../css/Weather.css'; // 添加CSS文件引用
 
 const Weather = () => {
     const [city, setCity] = useState('');
