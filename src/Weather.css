@@ -1,52 +1,6 @@
-/* 通用 */
-.app {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 2rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: background 1s;
-}
-
-h1 {
-    margin-bottom: 2rem;
-}
-
-/* 搜索框 */
-.search-box {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-input {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.3s;
-}
-
-button:hover {
-    transform: scale(1.05);
-    background-color: #45a049;
-}
-
 /* 天气卡片 */
 .weather-card {
-    background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+    background-color: rgba(255, 183, 0, 0.3); /* 半透明背景 */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 添加阴影 */
@@ -57,22 +11,21 @@ button:hover {
     z-index: 1;
 }
 
-.weather-card .top-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
 .weather-card h2 {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
 }
 
 .weather-card p {
     font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    color: #333;
+    margin: 0.5rem 0;
+    text-align: center;
 }
 
+/*API图片显示*/
 .weather-icon {
     width: 60px;
     height: 60px;
@@ -81,7 +34,7 @@ button:hover {
 
 .top-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 1rem;
 }
 

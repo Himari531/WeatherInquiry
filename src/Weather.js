@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 import './Weather.css'; // 添加CSS文件引用
 
@@ -42,7 +42,7 @@ const Weather = () => {
     const updateLocalTime = (timezone) => {
         const utc = new Date().getTime() + new Date().getTimezoneOffset() * 60000;
         const cityTime = new Date(utc + timezone * 1000);
-        setLocalTime(cityTime.toLocaleTimeString());
+        setLocalTime(cityTime.toLocaleString());
     };
 
     const handleSearch = () => {
@@ -79,7 +79,7 @@ const Weather = () => {
             {backgroundImage && (
                 <div
                     className="background"
-                    style={{ backgroundImage: `url(${backgroundImage})` }}
+                    style={{backgroundImage: `url(${backgroundImage})`}}
                 ></div>
             )}
             <h1>Weather Inquiry ⛅</h1>
@@ -99,8 +99,8 @@ const Weather = () => {
                 <div className="weather-card">
                     <div className="top-row">
                         <h2>{weather.name}</h2>
-                        <p>{localTime}</p>
                     </div>
+                    <p>local time:{localTime}</p>
                     <img
                         className="weather-icon"
                         src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}

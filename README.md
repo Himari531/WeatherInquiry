@@ -34,8 +34,7 @@ Sign up at OpenWeatherMap to get a free API key
 
 ### Configure your API key:
 
-Open Weather.js.
-Replace 'YOUR_API_KEY' with your actual API key.
+OpenWeather
 
 ## How to Use 🧭
 
