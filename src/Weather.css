@@ -1,0 +1,130 @@
+/* 通用 */
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background 1s;
+}
+
+h1 {
+    margin-bottom: 2rem;
+}
+
+/* 搜索框 */
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+input {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background-color: #45a049;
+}
+
+/* 天气卡片 */
+.weather-card {
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    width: 300px;
+    text-align: center;
+    margin: 20px auto;
+    position: relative;
+    z-index: 1;
+}
+
+.weather-card .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.weather-card h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.weather-card p {
+    font-size: 16px;
+}
+
+.weather-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.temp {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.description {
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+
+.details {
+    margin-top: 1rem;
+}
+
+/* 动画 */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* 确保图片填充整个容器 */
+    background-position: center center; /* 使图片居中 */
+    z-index: -1; /* 让背景图片在内容下面 */
+}
+
+/* 错误提示 */
+.error {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
