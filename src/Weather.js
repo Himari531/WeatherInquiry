@@ -53,19 +53,25 @@ const Weather = () => {
 
         {error && <p>{error}</p>} {/* 如果有错误，显示错误信息 */}
 
-        {weather && (<div
-            className={`weather-info ${getBackgroundClass(weather.weather[0].main)}`}>
+        {weather && (
+            <div className={`weather-info ${getBackgroundClass(weather.weather[0].main)}`}>
+                <h2>{weather.name}</h2>
+                <img
+                    src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                    alt="weather icon"
+                />
+                <p className="temp">{weather.main.temp}°C</p>
+                <p>{weather.weather[0].description}</p>
+                <div className="details">
+                    <p>Min Temp: {weather.main.temp_min}°C</p>
+                    <p>Max Temp: {weather.main.temp_max}°C</p>
+                </div>
+                <p>天気: {weather.weather[0].description}</p>
+                <p>湿度: {weather.main.humidity}%</p>
 
-            <h2>{weather.name}</h2>
-            <img
-                src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-                alt="weather icon"
-            />
-            <p>温度: {weather.main.temp}°C</p>
-            <p>天気: {weather.weather[0].description}</p>
-            <p>湿度: {weather.main.humidity}%</p>
-        </div>)}
+            </div>)
 
+        }
     </div>);
 };
 
