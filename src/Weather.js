@@ -9,6 +9,12 @@ const Weather = () => {
     const apiKey = process.env.REACT_APP_WEATHER_API_KEY; // 替换为你自己的API密钥
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=zh_cn`; // 你可以根据需要选择不同的API参数
 
+    const getLocalTime = (timezone) => {
+        const utc = new Date().getTime() + new Date().getTimezoneOffset() * 60000;
+        const localTime = new Date(utc + timezone * 1000);
+        return localTime.toLocaleString(); // 格式化成当地的时间字符串
+    };
+
     // 根据天气变换背景
     const getBackgroundClass = (weatherMain) => {
         switch (weatherMain) {
@@ -40,6 +46,21 @@ const Weather = () => {
             });
     };
 
+    // 穿衣建议函数
+    const getClothingAdvice = (temp) => {
+        if (temp >= 28) {
+            return "天气炎热，建议穿短袖、短裤，注意防晒！☀️";
+        } else if (temp >= 20) {
+            return "天气温暖，建议穿薄外套、长裤。🌤️";
+        } else if (temp >= 10) {
+            return "天气凉爽，建议穿针织衫或薄外套。🍂";
+        } else if (temp >= 0) {
+            return "天气寒冷，建议穿厚外套、戴围巾。❄️";
+        } else {
+            return "非常寒冷，羽绒服必备，注意保暖！☃️";
+        }
+    };
+
 
     return (<div>
         <h1>Weather Inquiry ☀️</h1>
@@ -55,7 +76,10 @@ const Weather = () => {
 
         {weather && (
             <div className={`weather-info ${getBackgroundClass(weather.weather[0].main)}`}>
-                <h2>{weather.name}</h2>
+                <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
+                    <h2>{weather.name}</h2>
+                    <p>local time: {getLocalTime(weather.timezone)}</p>
+                </div>
                 <img
                     src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
                     alt="weather icon"
@@ -68,9 +92,8 @@ const Weather = () => {
                 </div>
                 <p>天気: {weather.weather[0].description}</p>
                 <p>湿度: {weather.main.humidity}%</p>
-
+                <p>穿衣建议: {getClothingAdvice(weather.main.temp)}</p>
             </div>)
-
         }
     </div>);
 };

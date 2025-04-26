@@ -54,14 +54,14 @@ button:hover {
 
 .weather-info p {
     font-size: 18px;
-    color: #555;
+    color: #e5f4f8;
     margin-bottom: 5px;
 }
 
 .weather-info .temp {
     font-size: 25px;
     font-weight: bold;
-    color: #ff7043;
+    color: #ffbd43;
 }
 
 .weather-info img {
