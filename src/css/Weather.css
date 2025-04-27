@@ -88,3 +88,43 @@
     font-weight: bold;
     margin-top: 10px;
 }
+
+.input-wrapper {
+    position: relative;
+}
+
+.history-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #ccc;
+    border-top: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 0 0 10px 10px;
+}
+
+.history-dropdown li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.history-dropdown li:hover {
+    background-color: #f0f0f0;
+}
+
+.history-icon {
+    margin-right: 8px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -9,6 +9,7 @@ const Weather = () => {
     const [error, setError] = useState(null);
     //历史地点搜索记录
     const [history, setHistory] = useState([]);
+    const [showHistory, setShowHistory] = useState(false);
     const [localTime, setLocalTime] = useState('');
     const timerRef = useRef(null);
     const [backgroundImage, setBackgroundImage] = useState('');
@@ -84,19 +85,33 @@ const Weather = () => {
     }, []);
 
     return (<div className="app">
-        {backgroundImage && (<div
-            className="background"
-            style={{backgroundImage: `url(${backgroundImage})`}}
-        ></div>)}
-        <h1>World Weather Inquiry ⛅</h1>
+        {backgroundImage && (
+            <div className="background" style={{backgroundImage: `url(${backgroundImage})`}}></div>)
+        }
+        <h1 className={'h1'}>World Weather Inquiry ⛅</h1>
+
         <div className="search-box">
             <input
                 type="text"
-                placeholder="Please enter the name of the city"
+                placeholder="Please enter the English name of the city"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
+                onFocus={() => setShowHistory(true)}
+                onBlur={() => setTimeout(() => setShowHistory(false), 200)} // 延迟关闭，给点击历史的时间
             />
             <button onClick={handleSearch}>click</button>
+            {showHistory && history.length > 0 && (
+                <ul className="history-dropdown">
+                    {history.map((item, index) => (
+                        <li key={index} onClick={() => {
+                            setCity(item);
+                            setShowHistory(false);
+                        }}>
+                            <span className="history-icon">🔍</span> {item}
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
 
         {error && <p className="error">{error}</p>}
@@ -118,7 +133,7 @@ const Weather = () => {
         </div>)}
 
         {history.length > 0 && (<div className="history">
-            <h3>历史查询</h3>
+            <h3>Historical query list</h3>
             <ul>
                 {history.map((item, index) => (<li key={index} onClick={() => {
                     setCity(item);
@@ -128,6 +143,7 @@ const Weather = () => {
                 </li>))}
             </ul>
         </div>)}
+        <button onClick={clearHistory}>Clear History</button>
     </div>);
 };
 

@@ -11,6 +11,11 @@
     padding: 20px;
 }
 
+/*APP标题*/
+.h1 {
+    text-align: center;
+}
+
 .background {
     position: fixed;
     top: 0;
@@ -27,7 +32,7 @@
     display: flex;
     margin-bottom: 30px;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 }
 
 .search-box input {
@@ -36,7 +41,7 @@
     border-radius: 30px;
     border: 2px solid #fff;
     outline: none;
-    width: 250px;
+    width: 310px;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.2);
     color: #030213;
