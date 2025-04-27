@@ -65,10 +65,10 @@
 }
 
 .advice {
-    margin-top: 18px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #00ffa0;
+    margin-top: 5px;
+    font-size: 0.2rem;
+    font-weight: 200;
+    color: rgba(7, 1, 23, 0.9);
 }
 
 /* 动画 */
