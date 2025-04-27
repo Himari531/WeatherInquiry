@@ -155,8 +155,8 @@ const Weather = () => {
             />)}
             <p>Current Temperature：{weather.main.temp}°C</p>
             <p>Weather Conditions：{weather.weather[0].main}</p>
-            <p>Minimum Temperature: {weather.main.temp_min}°C</p>
             <p>Maximum Temperature: {weather.main.temp_max}°C</p>
+            <p>Minimum Temperature: {weather.main.temp_min}°C</p>
             <p>Sunrise: {sunrise}</p>
             <p>Sunset: {sunset}</p>
             <p>Humidity: {weather.main.humidity}%</p>
