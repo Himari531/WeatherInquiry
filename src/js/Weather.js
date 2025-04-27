@@ -1,7 +1,7 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import '../css/Weather.css';
-import {getHistory, saveHistory, clearHistory} from './HistoricalQueryRecords';
+import { getHistory, saveHistory, clearHistory } from './HistoricalQueryRecords';
 
 const Weather = () => {
     const [city, setCity] = useState('');
@@ -40,7 +40,11 @@ const Weather = () => {
     };
 
     const getClothingAdvice = (temp) => {
-        if (temp >= 28) return "天气炎热，短袖短裤，注意防晒！☀️"; else if (temp >= 20) return "天气温暖，薄外套就可以啦！🌤️"; else if (temp >= 10) return "天气凉爽，需要外套了。🍂"; else if (temp >= 0) return "天气寒冷，厚外套加围巾❄️"; else return "超级冷！羽绒服必备❄️☃️";
+        if (temp >= 28) return "天气炎热，短袖短裤，注意防晒！☀️";
+        else if (temp >= 20) return "天气温暖，薄外套就可以啦！🌤️";
+        else if (temp >= 10) return "天气凉爽，需要外套了。🍂";
+        else if (temp >= 0) return "天气寒冷，厚外套加围巾❄️";
+        else return "超级冷！羽绒服必备❄️☃️";
     };
 
     const updateLocalTime = (timezone) => {
@@ -64,9 +68,8 @@ const Weather = () => {
 
                 // 新增：查询城市背景图
                 fetchCityImage(city);
-                saveHistory(city);
-                setHistory(getHistory());
-
+                saveHistory(city); // 保存历史记录
+                setHistory(getHistory()); // 更新历史记录
             })
             .catch((error) => {
                 setWeather(null);
@@ -87,8 +90,8 @@ const Weather = () => {
     return (
         <div className="app">
             {backgroundImage && (
-                <div className="background" style={{backgroundImage: `url(${backgroundImage})`}}></div>)
-            }
+                <div className="background" style={{ backgroundImage: `url(${backgroundImage})` }}></div>
+            )}
             <h1 className={'h1'}>World Weather Inquiry ⛅</h1>
 
             <div className="search-box">
@@ -117,36 +120,45 @@ const Weather = () => {
 
             {error && <p className="error">{error}</p>}
 
-            {weather && (<div className="weather-card">
-                <h2>{weather.name}</h2>
-                <p>local time : {localTime}</p>
-                {weather && weather.weather && weather.weather[0] && (<img
-                    className="weather-icon"
-                    src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-                    alt="weather icon"
-                />)}
-                <p>{weather.main.temp}°C</p>
-                <p>{weather.weather[0].description}</p>
-                <p>最低温度: {weather.main.temp_min}°C</p>
-                <p>最高温度: {weather.main.temp_max}°C</p>
-                <p>湿度: {weather.main.humidity}%</p>
-                <p>穿衣建议: {getClothingAdvice(weather.main.temp)}</p>
-            </div>)}
+            {weather && (
+                <div className="weather-card">
+                    <h2>{weather.name}</h2>
+                    <p>local time : {localTime}</p>
+                    {weather && weather.weather && weather.weather[0] && (
+                        <img
+                            className="weather-icon"
+                            src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                            alt="weather icon"
+                        />
+                    )}
+                    <p>{weather.main.temp}°C</p>
+                    <p>{weather.weather[0].description}</p>
+                    <p>最低温度: {weather.main.temp_min}°C</p>
+                    <p>最高温度: {weather.main.temp_max}°C</p>
+                    <p>湿度: {weather.main.humidity}%</p>
+                    <p>穿衣建议: {getClothingAdvice(weather.main.temp)}</p>
+                </div>
+            )}
 
             {history.length > 0 && (
                 <div className="history">
-                    <h3>Historical query list</h3>
-                    <button onClick={clearHistory}>Clear History</button>
+                    <div className="history-header">
+                        <h3>Historical query list</h3>
+                        <button onClick={clearHistory}>Clear History</button>
+                    </div>
                     <ul>
-                        {history.map((item, index) => (<li key={index} onClick={() => {
-                            setCity(item);
-                            handleSearch();
-                        }}>
-                            {item}
-                        </li>))}
+                        {history.map((item, index) => (
+                            <li key={index} onClick={() => {
+                                setCity(item);
+                                handleSearch();
+                            }}>
+                                {item}
+                            </li>
+                        ))}
                     </ul>
-                </div>)
-            }
+                </div>
+            )}
+
             {
                 !weather && (<div className="project-intro">
                     <h3>🌏 Introduce Myself</h3>
@@ -159,8 +171,6 @@ const Weather = () => {
                 </div>)
             }
         </div>
-
-
     );
 };
 
