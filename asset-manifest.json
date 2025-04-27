@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/WeatherInquiry/static/css/main.b5f5dd06.css",
-    "main.js": "/WeatherInquiry/static/js/main.81e6eb68.js",
+    "main.js": "/WeatherInquiry/static/js/main.882fffda.js",
     "static/js/453.0ccb7fb4.chunk.js": "/WeatherInquiry/static/js/453.0ccb7fb4.chunk.js",
     "index.html": "/WeatherInquiry/index.html",
     "main.b5f5dd06.css.map": "/WeatherInquiry/static/css/main.b5f5dd06.css.map",
-    "main.81e6eb68.js.map": "/WeatherInquiry/static/js/main.81e6eb68.js.map",
+    "main.882fffda.js.map": "/WeatherInquiry/static/js/main.882fffda.js.map",
     "453.0ccb7fb4.chunk.js.map": "/WeatherInquiry/static/js/453.0ccb7fb4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b5f5dd06.css",
-    "static/js/main.81e6eb68.js"
+    "static/js/main.882fffda.js"
   ]
 }
