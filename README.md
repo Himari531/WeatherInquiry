@@ -27,3 +27,5 @@ LocalStorage。
 Type a city name into the input field.
 Click the "Search" button.
 View the current weather information for the entered city.
+
+url：https://Sunny5031.github.io/WeatherInquiry
