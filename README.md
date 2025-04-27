@@ -17,24 +17,10 @@ Basic and clean user interface
 
 ## Technologies Used 🛠️
 
-React
-Axios
-OpenWeatherMap API
-
-## Installation Steps 🪤
-
-
-### Install dependencies:
-
-npm install
-
-### Get your API key:
-
-Sign up at OpenWeatherMap to get a free API key
-
-### Configure your API key:
-
-OpenWeather
+React.js
+OpenWeather API
+Unsplash API
+LocalStorage。
 
 ## How to Use 🧭
 

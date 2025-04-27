@@ -84,69 +84,84 @@ const Weather = () => {
         setHistory(getHistory());
     }, []);
 
-    return (<div className="app">
-        {backgroundImage && (
-            <div className="background" style={{backgroundImage: `url(${backgroundImage})`}}></div>)
-        }
-        <h1 className={'h1'}>World Weather Inquiry ⛅</h1>
+    return (
+        <div className="app">
+            {backgroundImage && (
+                <div className="background" style={{backgroundImage: `url(${backgroundImage})`}}></div>)
+            }
+            <h1 className={'h1'}>World Weather Inquiry ⛅</h1>
 
-        <div className="search-box">
-            <input
-                type="text"
-                placeholder="Please enter the English name of the city"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                onFocus={() => setShowHistory(true)}
-                onBlur={() => setTimeout(() => setShowHistory(false), 200)} // 延迟关闭，给点击历史的时间
-            />
-            <button onClick={handleSearch}>click</button>
-            {showHistory && history.length > 0 && (
-                <ul className="history-dropdown">
-                    {history.map((item, index) => (
-                        <li key={index} onClick={() => {
-                            setCity(item);
-                            setShowHistory(false);
-                        }}>
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </div>
+            <div className="search-box">
+                <input
+                    type="text"
+                    placeholder="Please enter the English name of the city"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    onFocus={() => setShowHistory(true)}
+                    onBlur={() => setTimeout(() => setShowHistory(false), 200)} // 延迟关闭，给点击历史的时间
+                />
+                <button onClick={handleSearch}>click</button>
+                {showHistory && history.length > 0 && (
+                    <ul className="history-dropdown">
+                        {history.map((item, index) => (
+                            <li key={index} onClick={() => {
+                                setCity(item);
+                                setShowHistory(false);
+                            }}>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
 
-        {error && <p className="error">{error}</p>}
+            {error && <p className="error">{error}</p>}
 
-        {weather && (<div className="weather-card">
-            <h2>{weather.name}</h2>
-            <p>local time : {localTime}</p>
-            {weather && weather.weather && weather.weather[0] && (<img
-                className="weather-icon"
-                src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-                alt="weather icon"
-            />)}
-            <p>{weather.main.temp}°C</p>
-            <p>{weather.weather[0].description}</p>
-            <p>最低温度: {weather.main.temp_min}°C</p>
-            <p>最高温度: {weather.main.temp_max}°C</p>
-            <p>湿度: {weather.main.humidity}%</p>
-            <p>穿衣建议: {getClothingAdvice(weather.main.temp)}</p>
-        </div>)}
-
-        {history.length > 0 && (
-            <div className="history">
-                <h3>Historical query list</h3>
-                <button onClick={clearHistory}>Clear History</button>
-                <ul>
-                    {history.map((item, index) => (<li key={index} onClick={() => {
-                        setCity(item);
-                        handleSearch();
-                    }}>
-                        {item}
-                    </li>))}
-                </ul>
+            {weather && (<div className="weather-card">
+                <h2>{weather.name}</h2>
+                <p>local time : {localTime}</p>
+                {weather && weather.weather && weather.weather[0] && (<img
+                    className="weather-icon"
+                    src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                    alt="weather icon"
+                />)}
+                <p>{weather.main.temp}°C</p>
+                <p>{weather.weather[0].description}</p>
+                <p>最低温度: {weather.main.temp_min}°C</p>
+                <p>最高温度: {weather.main.temp_max}°C</p>
+                <p>湿度: {weather.main.humidity}%</p>
+                <p>穿衣建议: {getClothingAdvice(weather.main.temp)}</p>
             </div>)}
 
-    </div>);
+            {history.length > 0 && (
+                <div className="history">
+                    <h3>Historical query list</h3>
+                    <button onClick={clearHistory}>Clear History</button>
+                    <ul>
+                        {history.map((item, index) => (<li key={index} onClick={() => {
+                            setCity(item);
+                            handleSearch();
+                        }}>
+                            {item}
+                        </li>))}
+                    </ul>
+                </div>)
+            }
+            {
+                !weather && (<div className="project-intro">
+                    <h3>🌏 Introduce Myself</h3>
+                    <p>
+                        本应用支持查询世界各地的天气情况，实时显示当地时间、天气图标、温度与湿度等详细信息。
+                    </p>
+                    <p>
+                        每次搜索城市时，背景图会自动变化为该城市的美丽风景，并保存搜索历史，方便快速访问！
+                    </p>
+                </div>)
+            }
+        </div>
+
+
+    );
 };
 
 export default Weather;
