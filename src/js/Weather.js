@@ -147,20 +147,20 @@ const Weather = () => {
 
         {weather && (<div className="weather-card">
             <h2>{weather.name}</h2>
-            <p>Local Time : {localTime}</p>
+            <p>Local Time 📆: {localTime}</p>
             {weather && weather.weather && weather.weather[0] && (<img
                 className="weather-icon"
                 src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
                 alt="weather icon"
             />)}
-            <p>Current Temperature：{weather.main.temp}°C</p>
-            <p>Weather Conditions：{weather.weather[0].main}</p>
-            <p>Maximum Temperature: {weather.main.temp_max}°C</p>
-            <p>Minimum Temperature: {weather.main.temp_min}°C</p>
-            <p>Sunrise: {sunrise}</p>
-            <p>Sunset: {sunset}</p>
-            <p>Humidity: {weather.main.humidity}%</p>
-            <p className={'advice'}>Clothing Tips: {getClothingAdvice(weather.main.temp)}</p>
+            <p>Current Temperature 🌡️：{weather.main.temp}°C</p>
+            <p>Weather Conditions🔔：{weather.weather[0].main}</p>
+            <p>Maximum Temperature <strong>(MAX)</strong>: {weather.main.temp_max}°C</p>
+            <p>Minimum Temperature<strong>(MIN)</strong>: {weather.main.temp_min}°C</p>
+            <p>Sunrise 🌅 : {sunrise}</p>
+            <p>Sunset 🌄 : {sunset}</p>
+            <p>Humidity 💦 : {weather.main.humidity}%</p>
+            <p className={'advice'}>Clothing Tips 🏷️ : {getClothingAdvice(weather.main.temp)}</p>
         </div>)}
 
         {history.length > 0 && (<div className="history">
