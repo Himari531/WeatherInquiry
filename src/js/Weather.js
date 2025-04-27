@@ -107,7 +107,7 @@ const Weather = () => {
                             setCity(item);
                             setShowHistory(false);
                         }}>
-                            <span className="history-icon">🔍</span> {item}
+                            {item}
                         </li>
                     ))}
                 </ul>
@@ -132,18 +132,20 @@ const Weather = () => {
             <p>穿衣建议: {getClothingAdvice(weather.main.temp)}</p>
         </div>)}
 
-        {history.length > 0 && (<div className="history">
-            <h3>Historical query list</h3>
-            <ul>
-                {history.map((item, index) => (<li key={index} onClick={() => {
-                    setCity(item);
-                    handleSearch();
-                }}>
-                    {item}
-                </li>))}
-            </ul>
-        </div>)}
-        <button onClick={clearHistory}>Clear History</button>
+        {history.length > 0 && (
+            <div className="history">
+                <h3>Historical query list</h3>
+                <button onClick={clearHistory}>Clear History</button>
+                <ul>
+                    {history.map((item, index) => (<li key={index} onClick={() => {
+                        setCity(item);
+                        handleSearch();
+                    }}>
+                        {item}
+                    </li>))}
+                </ul>
+            </div>)}
+
     </div>);
 };
 
