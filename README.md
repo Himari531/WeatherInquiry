@@ -28,4 +28,4 @@ Type a city name into the input field.
 Click the "Search" button.
 View the current weather information for the entered city.
 
-url：https://universecode987.github.io/weatherInquiry/
+url：https://universecode987.github.io/WeatherInquiry/
