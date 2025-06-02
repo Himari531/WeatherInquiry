@@ -181,12 +181,12 @@ const Weather = () => {
         {!weather && (<div className="project-intro">
             <h3>🌏 Introduce Myself</h3>
             <p>
-                This application supports querying weather conditions around the world, and displays detailed
-                information such as local time, weather icons, temperature and humidity in real time.
+                This application supports querying weather conditions from around the world, displaying detailed
+                real-time information such as local time, weather icons, temperature, and humidity.
             </p>
             <p>
-                Every time you search for a city, the background image will automatically change to the beautiful
-                scenery of the city, and the search history will be saved for quick access!
+                Every time you search for a city, the background image will automatically change to showcase beautiful
+                scenery from that city. Additionally, your search history will be saved for quick access!
             </p>
         </div>)}
     </div>);
