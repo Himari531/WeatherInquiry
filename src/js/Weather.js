@@ -178,7 +178,7 @@ const Weather = () => {
             </ul>
         </div>)}
 
-        {!weather && (<div className="project-intro">
+        {!weather && <div className="project-intro">
             <h3>🌏 Introduce Myself</h3>
             <p>
                 This application supports querying weather conditions from around the world, displaying detailed
@@ -188,7 +188,11 @@ const Weather = () => {
                 Every time you search for a city, the background image will automatically change to showcase beautiful
                 scenery from that city. Additionally, your search history will be saved for quick access!
             </p>
-        </div>)}
+            <p>
+                このアプリケーションでは、世界各地の天気情報をリアルタイムで確認できます。現地時間、天気アイコン、気温、湿度などの詳しい情報を表示します。<br/>
+                都市名を検索すると、背景画像がその都市の美しい風景に自動で切り替わります。また、検索履歴を保存するため、次回以降のアクセスがよりスムーズになります。
+            </p>
+        </div>}
     </div>);
 };
 
